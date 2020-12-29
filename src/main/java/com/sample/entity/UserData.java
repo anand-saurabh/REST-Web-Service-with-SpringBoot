@@ -1,9 +1,20 @@
-package com.sample.domain;
+package com.sample.entity;
 
-public class UserDetail {
+import org.springframework.data.cassandra.core.cql.PrimaryKeyType;
+import org.springframework.data.cassandra.core.mapping.Column;
+import org.springframework.data.cassandra.core.mapping.PrimaryKeyColumn;
+import org.springframework.data.cassandra.core.mapping.Table;
+
+@Table("user_info")
+public class UserData {
+    @PrimaryKeyColumn(name = "marketing_label_desc", ordinal = 0, type = PrimaryKeyType.PARTITIONED)
     String id;
+    @PrimaryKeyColumn(name = "start_date", ordinal = 2, type = PrimaryKeyType.CLUSTERED)
     String firstName;
+
+    @Column("last_name")
     String lastName;
+    @Column("age")
     int age;
 
     public String getId() {
@@ -13,6 +24,7 @@ public class UserDetail {
     public void setId(String id) {
         this.id = id;
     }
+
     public String getFirstName() {
         return firstName;
     }
