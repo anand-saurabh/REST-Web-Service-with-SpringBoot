@@ -7,9 +7,9 @@ import org.springframework.data.cassandra.core.mapping.Table;
 
 @Table("user_info")
 public class UserData {
-    @PrimaryKeyColumn(name = "marketing_label_desc", ordinal = 0, type = PrimaryKeyType.PARTITIONED)
-    String id;
-    @PrimaryKeyColumn(name = "start_date", ordinal = 2, type = PrimaryKeyType.CLUSTERED)
+    @PrimaryKeyColumn(name = "user_id", ordinal = 0, type = PrimaryKeyType.PARTITIONED)
+    int id;
+    @PrimaryKeyColumn(name = "first_name", ordinal = 2, type = PrimaryKeyType.CLUSTERED)
     String firstName;
 
     @Column("last_name")
@@ -17,11 +17,11 @@ public class UserData {
     @Column("age")
     int age;
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

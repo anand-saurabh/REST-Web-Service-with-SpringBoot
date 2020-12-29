@@ -1,12 +1,18 @@
 package com.sample.service;
 
-import com.sample.domain.UserDetail;
+import com.sample.entity.UserData;
+import com.sample.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.List;
 
 public class UserService {
 
-    public UserDetail getUserDetail(String id)
+    @Autowired
+    UserRepository userRepository;
+
+    public List<UserData> getUserDetail(int id)
     {
-
-
+        return userRepository.getUserData(id);
     }
 }
