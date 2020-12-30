@@ -18,7 +18,7 @@ public class UserRepository {
     @Autowired
     CassandraOperations cassandraOperations;
 
-    public List<UserData> getUserData(int id)
+    public List<UserData> getUserData(String id)
     {
         List<UserData>
         userDataList;
@@ -26,9 +26,14 @@ public class UserRepository {
                 .all()
                 .from("user_info")
                 .where(eq("user_id", id));
-        statement.setConsistencyLevel(ConsistencyLevel.LOCAL_QUORUM);
+        statement.setConsistencyLevel(ConsistencyLevel.QUORUM);
         userDataList = cassandraOperations
                 .select(statement.toString(), UserData.class);
         return userDataList;
+    }
+
+    public void saveUserData(UserData userData)
+    {
+        cassandraOperations.insert(userData);
     }
 }

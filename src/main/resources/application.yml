@@ -8,3 +8,4 @@ spring:
       password      : ''
       ssl           : false
       ttl           : 345600
+      local-datacenter : datacenter1
